@@ -1,0 +1,395 @@
+body{margin:0 !impotant;background:black}
+label {display: inline !important;float: left;}
+h2 {clear:both;
+    margin: 1%;
+    padding: 1%;
+}
+h1{
+    clear: both;
+    margin: 1%;
+    padding: 1%;
+    display: inline;
+    position: absolute;
+    color: white;
+    font-family: monospace;
+}
+h3{
+    font-size: 18px;
+}
+a{    color: #337ab7;}
+#wrapper{ width:1000px;margin:0 auto;}
+#wrapper_inner{    
+	padding: 20px;
+    background: #f7f7f7;
+    border-top: 1px solid rgba(191, 191, 191, 0.4);
+    border-bottom: 1px solid rgba(191, 191, 191, 0.4);
+    position:relative
+}
+#searchbox
+{
+    display: block;
+    float: right;
+    background: #fafad24a;
+    padding: 7px;
+    margin: 7px;
+    position: absolute;
+    top: 10%;
+    right: 0;
+
+}
+.flag_books{
+    color: red;
+    float: right;
+    margin: 1%;
+    padding: 1%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+    width: 70%
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 8px;
+}
+
+.vertical-menu {
+  width: 200px;
+}
+
+.vertical-menu input {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu input:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu input.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+.TFtable {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.TFtable td {
+    padding: 1px;
+    border-left: rgba(218, 218, 218, 0.4) 1px solid;
+    border-right: rgba(218, 218, 218, 0.4) 1px solid;
+    border-top: rgba(218, 218, 218, 0.4) 1px solid;
+    text-align: center;
+    line-height: 1.1;
+    font-size: 14px;
+    letter-spacing: -0.5px;
+    word-break: break-word !important;
+    min-width: 50px;
+    color: #1c235d;
+    position: relative;
+}
+.loadTd {
+    height: 31px;
+}
+.TFtable th {
+    padding: 3px 0px !important;
+    border: rgba(218, 218, 218, 0.4) 1px solid;
+    font-size: 13px;
+    text-align: center;
+}
+.TFtable tr{
+    background: #b8d1f3;
+}
+.TFtable tr:nth-child(odd) {
+    background: #F3F1F1;
+}
+.TFtable tr:nth-child(even) {
+    background: rgba(243, 241, 241, 0.33);
+}
+
+.TFtable td input {
+    max-width: 85px;
+    text-align: center;
+}
+
+
+.pageSelected {
+    -webkit-box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2);
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2);
+}
+
+.paginikCon {
+    /*float: left;*/
+
+}
+
+.pagin {
+    float: left;
+    width: 100%;
+    justify-content: center;
+    padding: 8px 0 8px 0;
+    background-color:#f9f8f8;
+}
+.pagin > button {
+    margin: -2px 3px;
+    border: 1px solid #eee;
+    height: 34px;
+    width: 34px;
+}
+.pagin > button:hover {
+    -webkit-box-shadow: 0px 0px 6px -2px rgba(2, 62, 165, 0.69);
+    -moz-box-shadow: 0px 0px 6px -2px rgba(2, 62, 165, 0.69);
+    box-shadow: 0px 0px 6px -2px rgba(2, 62, 165, 0.69);
+}
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+.pagination > li {
+    display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+    z-index: 2;
+    color: #23527c;
+    background-color: #eee;
+    border-color: #ddd;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+}
+.pagination-lg > li > a,
+.pagination-lg > li > span {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+}
+.pagination-lg > li:first-child > a,
+.pagination-lg > li:first-child > span {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.pagination-lg > li:last-child > a,
+.pagination-lg > li:last-child > span {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.pagination-sm > li > a,
+.pagination-sm > li > span {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:first-child > span {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.pagination-sm > li:last-child > a,
+.pagination-sm > li:last-child > span {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+/* Style the counter cards */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-color: white;
+    width: 32%;
+    height:200px;
+    float: left;
+    margin:0.5%;
+display:block;position:relative
+}
+.card a{color: #b73333;}
+.cardleft{padding: 8px;
+    margin: 0 auto;
+    line-height: 1.5;}
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.stylebox{
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    color:white
+}
+}
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+.tag {
+    padding: 8px 30px 2px 10px;
+    position: absolute;
+    z-index: 200;
+    border-top-left-radius: 16px;
+    background: #4e4e4e;
+    bottom: 0;
+    right:0;
+}.tag a{color: white;}
+.tag2 {
+    padding: 5px 5px 5px 5px;
+    position: absolute;
+    z-index: 200;
+    background: #820000;
+    color: #0088ff;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+}
+.tag3 {
+    padding: 5px 5px 5px 5px;
+    position: absolute;
+    z-index: 200;
+    color: #0088ff;
+    bottom: 25px;
+    right: 0;
+}
+
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
