@@ -48,4 +48,4 @@
 <br/>
 
 
-<script src="/apps/bks/fimg.js"></script>
+<script src="/js/fimg.js"></script>

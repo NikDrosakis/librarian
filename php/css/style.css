@@ -18,8 +18,9 @@ h3{
 }
 a{    color: #337ab7;}
 #wrapper{ width:1000px;margin:0 auto;}
-#wrapper_inner{    
-	padding: 20px;
+#wrapper_inner{
+    margin: 0;
+    padding: 0;
     background: #f7f7f7;
     border-top: 1px solid rgba(191, 191, 191, 0.4);
     border-bottom: 1px solid rgba(191, 191, 191, 0.4);

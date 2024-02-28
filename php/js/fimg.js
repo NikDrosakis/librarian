@@ -5,16 +5,16 @@ $(document).on('click', "#savefimg", function () {
     $('#bookimg').attr('src',url);
     var name=$("input[name='fitems']:checked").attr('data');
     g.l(name)
-	var mode= GS.mode=='' ? 'book':GS.mode;
+	var mode= G.mode=='' ? 'book':G.mode;
     //save to db	
-    $.post('/apps/bks/ajax.php',{a:"copy",url:url,name:name,id:GS.id,table:mode},function(data){
+    $.post('/apps/bks/ajax.php',{a:"copy",url:url,name:name,id:G.id,table:mode},function(data){
         g.l(data);
     })
 
 
 })
 
-if(GS.id=='new'){
+if(G.id=='new'){
 $(document).on('click', "input[name='fitems']", function () {
 	var url = $("input[name='fitems']:checked").val();
 	$('#form_book').append("<input type='hidden' name='img_url' value='"+url+"'>")
@@ -23,11 +23,11 @@ $(document).on('click', "input[name='fitems']", function () {
 
 $(document).on('click', "#fimg", function () {
 
-    if(GS.mode=='book' || GS.mode=='') {
+    if(G.mode=='book' || G.mode=='') {
         var ftitle = $('#ftitle').val().trim();
         var writer = $('#writer').val();
         var editor = $('#editor').val();
-        if(GS.id=='new'){
+        if(G.id=='new'){
 			var q = $('input[name="title"]').val().trim()+' '
 					+$('input[name="writer"]').val().trim()+' '
 					+$('input[name="editor"]').val().trim();

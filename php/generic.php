@@ -825,10 +825,10 @@ function json2array($file){
 //configuration file
 function config($DOMAIN='',$rootconfig=false){
 //        $this->conf = parse_ini_file('/var/www/setup.ini',true);
-	   if(file_exists(SITE_ROOT.'gaia.json')){	   
-	   $conf= jsonget(SITE_ROOT.'gaia.json');
+	   if(file_exists(SITE_ROOT.'config.json')){
+	   $conf= jsonget(SITE_ROOT.'config.json');
 
-	   //if in localhost/gaia catch the first domain of the setup.json
+	   //if in localhost/gaia catch the first domain of the config.json
 	$alldomains=array_keys($conf['domains']);
 	//xecho($alldomains);
 	//xecho($_SERVER['HTTP_HOST']);
@@ -841,7 +841,7 @@ function config($DOMAIN='',$rootconfig=false){
   //  }else {
         //return !$conf['domains'][$DOMAIN] ? $conf['domains'][SERVERBASE] : $conf['domains'][$DOMAIN];
        // return !$conf['domains'][$DOMAIN] ? $conf['domains'][SERVERBASE] : $conf['domains'][$DOMAIN];
-        return $conf['domains'][$DOMAIN];
+        return $conf;
   //  }
 	   }else{
 		   return false;

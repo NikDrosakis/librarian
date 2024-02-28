@@ -3,7 +3,9 @@
 <?php 
 for ($i=0;$i<count($sel);$i++) {
 $postid = $sel[$i]['id'];
-$img = !$sel[$i]['img'] ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzeJcVMWcaL9PHY6MwqifB00XWtBxzFvsvyfL2rNXZdkB0E4DA" : SITE_URL.'apps/bks/media/'. $sel[$i]['img'];
+$img = !$sel[$i]['img']
+    ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzeJcVMWcaL9PHY6MwqifB00XWtBxzFvsvyfL2rNXZdkB0E4DA"
+    : SITE_URL.'media/'. $sel[$i]['img'];
 ?>
 <div id="nodorder1_<?=$postid?>"class="card">
 <button  type="button" class="close" aria-label="delete" id="del<?=$sel[$i]['id']?>"><span aria-hidden="true">&times;</span></button>

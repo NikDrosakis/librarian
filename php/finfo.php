@@ -100,4 +100,4 @@
     <section>
 </div>
 
-<script src="/apps/bks/finfo.js"></script>
+<script src="/js/finfo.js"></script>

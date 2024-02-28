@@ -1,24 +1,22 @@
 var bookdefaultimg= "https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg";
 var book_status={"0" : "lost","1":"not owned","2" :"desired","3" : "shelve"};
 var isread={0:"not read",1 :"reading",2 :"read"};
-//g.ajaxfile='/bks/ajax.php';
-if(!g.cookie.get){
-	g.cookie.set('bks_style','archieve');
+//s.ajaxfile='/bks/ajax.php';
+if(!s.coo){
+	s.coo('bks_style','archieve');
 }
 
 function booklist(q) {
-    var page=!g.cookie.get('page') ? 1: g.cookie.get('page');    
-	var data= {a:'list',page:page,q:q,mode:GS.mode,name:GS.name};
+    var page=!s.coo('page') ? 1: s.coo('page'), q=!!q ? q : '';
+	var params= {a:'list',page:page,q:q,mode:G.mode,name:G.name};
+    console.log(params)
 	//url,div,data,callback,method,datatype
- g.file.include(GS.APPSPATH+'bks/ajax.php',data,function(res){
-	 g.l(res)
+ $.get('/ajax.php',params,function(res){
+	 console.log(res)
 			$('#book').html(res.html);	 
              $('#count_bks_books').text(res.count+ " titles saved");           
-            g.ui.pagination.get(page, res.count, 12,'book');
- },'POST');
-}
-if(GS.mode=="" || GS.mode=="ebook") {
-    booklist();
+            s.ui.pagination.get(page, res.count, 12,'book');
+ },'json');
 }
 
 
@@ -31,14 +29,13 @@ $(document).on('click', "#submit_cat", function () {
 	    var formid=$("#form_cat")
     event.preventDefault();
     var form = formid.serializeArray();
-	$.post(GS.APPSPATH+'bks/ajax.php', form, function (data, textStatus, jqXHR) {
-		  g.l(data)
+	$.post('/ajax.php', form, function (data, textStatus, jqXHR) {		  
         if (data == 'no') {		
-            g.l(textStatus)
-            g.l(jqXHR)
-            g.alert("Form cannot be submitted");
+            console.log(textStatus)
+            console.log(jqXHR)
+            s.alert("Form cannot be submitted");
         } else {
-            g.l(data)         
+            console.log(data)         
               location.href="/bks/cat";
             // formid.reset();
         }
@@ -49,20 +46,20 @@ $(document).on('click', "#submit_book", function () {
     var formid=$("#form_book");
     event.preventDefault();
     var form = formid.serializeArray();
- //   form[g.size(form)]={name:'uid',value: g.cookie.get('GSID')}
-   form[g.size(form)]={name:'saved',value: g.phptimestamp()}
-    // form[g.size(form)]={name:'status',value: {0:'unread',1:'reading',2:'read'}}
-    //form[g.size(form)]={name:'excerpt',value: $('#excerpt').summernote('code')}
-    //form[g.size(form)]={name:'content',value: $('#content').summernote('code')}
-    g.l(form)
-    $.post(GS.APPSPATH+'bks/ajax.php', form, function (data, textStatus, jqXHR) {
-		  g.l(data)
+ //   form[s.size(form)]={name:'uid',value: s.coo('GID')}
+   form[s.size(form)]={name:'saved',value: s.phptimestamp()}
+    // form[s.size(form)]={name:'status',value: {0:'unread',1:'reading',2:'read'}}
+    //form[s.size(form)]={name:'excerpt',value: $('#excerpt').summernote('code')}
+    //form[s.size(form)]={name:'content',value: $('#content').summernote('code')}
+    console.log(form)
+    $.post('/ajax.php', form, function (data, textStatus, jqXHR) {
+		  console.log(data)
         if (data == 'no') {		
-            g.l(textStatus)
-            g.l(jqXHR)
-            g.alert("Form cannot be submitted");
+            console.log(textStatus)
+            console.log(jqXHR)
+            s.alert("Form cannot be submitted");
         } else {
-            g.l(data)         
+            console.log(data)         
               location.href="/bks";
             // formid.reset();
         }
@@ -71,8 +68,8 @@ $(document).on('click', "#submit_book", function () {
 $(document).on('keyup', "#writer, #editor, #cat", function () {
 	var id=this.id;
 	var val=this.value.trim();	
-	 $.get(GS.APPSPATH+'bks/ajax.php',{a:"radiolist",b:id,c:val},function(data){
-	 g.l(data);
+	 $.get('/ajax.php',{a:"radiolist",b:id,c:val},function(data){
+	 console.log(data);
 	 var list='';
 	 if(data!='no'){
 		 for(var i in data){		 
@@ -90,7 +87,7 @@ $(document).on('click', "input[name='writerlist'], input[name='editorlist'], inp
 	$('#'+name).val(sel)
 })	
 
-if(GS.mode=='cat'){
+if(G.mode=='cat'){
 	
 		$(document)
 		.on('change', "select[id^='parent']", function () {
@@ -101,25 +98,25 @@ if(GS.mode=='cat'){
             table : "cat",
             where : "id="+catid
 			}
-			g.l(obj)
-			g.db.queryhtml(obj, function(data){g.l(data);},"POST");
+			console.log(obj)
+			s.db.queryhtml(obj, function(data){console.log(data);},"POST");
 	})
 	
 	.on('keyup', "#name", function () {
 		var name= this.value.trim();
-		 g.db.query('UPDATE cat SET name="'+name+'" WHERE id='+GS.id);
-		 g.l(name)
+		 s.db.query('UPDATE cat SET name="'+name+'" WHERE id='+G.id);
+		 console.log(name)
 	})
 }
-if(GS.id!=''){
+if(G.id!=''){
 	$(document).on('change', "#status","#isread", function () {
 	var obj = {
-            id :GS.id,
+            id :G.id,
             value : this.id+"='"+this.value+"'",
             table : "book",
-            where : "id="+g.get.id
+            where : "id="+s.get.id
 			}
-	g.db.queryhtml(obj, function(data){g.l(data);},"POST");
+	s.db.queryhtml(obj, function(data){console.log(data);},"POST");
 	})
 
 
@@ -127,60 +124,60 @@ $(document).on('click', "#savewri", function () {
     var writer = $('#writer').val().trim();
     var writerlist = $('input[name=writerlist]:checked').val();
         if(typeof(writerlist)!='undefined'){
-            g.db.func("q",'UPDATE book SET writer='+writerlist+' WHERE id='+GS.id);
+            s.db.func("q",'UPDATE book SET writer='+writerlist+' WHERE id='+G.id);
             var dataname= $('input[name=writerlist]:checked').attr('data-name');
             $('#writer').val(dataname);
         }else if(writer!=""){
-            $.get(g.ajaxfile,{a:"inse",table:"writer",name:writer},function(data){
-                g.l(data)
+            $.get(s.ajaxfile,{a:"inse",table:"writer",name:writer},function(data){
+                console.log(data)
 				if(data!='no'){
-					g.db.func("q",'UPDATE book SET writer='+data+' WHERE id='+GS.id);
-					g.ui.notify('alert','Writer saved')
+					s.db.func("q",'UPDATE book SET writer='+data+' WHERE id='+G.id);
+					s.ui.notify('alert','Writer saved')
 					}
             },'json');
         }else{
-            g.ui.notify('alert','Please insert a writer');
+            s.ui.notify('alert','Please insert a writer');
         }
 })
 $(document).on('click', "#savecat", function () {
         var cat= $('#cat').val().trim();
 		var catlist = $('input[name=catlist]:checked').val();
          if(typeof(catlist)!='undefined'){
-			 g.l('case update')
-            g.db.query('UPDATE book SET cat='+catlist+' WHERE id='+GS.id);
+			 console.log('case update')
+            s.db.query('UPDATE book SET cat='+catlist+' WHERE id='+G.id);
             var dataname= $('input[name=catlist]:checked').attr('data-name');
             $('#cat').val(dataname);
         }else if(cat!=""){
-            $.get(g.ajaxfile,{a:"inse",table:"cat",name:cat},function(data){
-                g.l(data)
+            $.get(s.ajaxfile,{a:"inse",table:"cat",name:cat},function(data){
+                console.log(data)
 				if(data!='no'){
-					g.db.func("q",'UPDATE book SET cat='+data+' WHERE id='+GS.id);
-					g.ui.notify('alert','Category saved')
+					s.db.func("q",'UPDATE book SET cat='+data+' WHERE id='+G.id);
+					s.ui.notify('alert','Category saved')
 					}
             },'json');
         }else{
-            g.ui.notify('alert','Please insert a category.')
+            s.ui.notify('alert','Please insert a category.')
         }
 })
 	$(document).on('click', "#savedi", function () {
         var editor= $('#editor').val().trim();
 		var editorlist = $('input[name=editorlist]:checked').val();
          if(typeof(editorlist)!='undefined'){
-			 g.l('case update')
-            g.db.query('UPDATE book SET editor='+editorlist+' WHERE id='+GS.id);
+			 console.log('case update')
+            s.db.query('UPDATE book SET editor='+editorlist+' WHERE id='+G.id);
             var dataname= $('input[name=editorlist]:checked').attr('data-name');
             $('#editor').val(dataname);
         }else if(editor!=""){
-			g.l('case insert')
-            $.get(g.ajaxfile,{a:"inse",table:"editor",name:editor},function(data){
-                g.l(data)
+			console.log('case insert')
+            $.get(s.ajaxfile,{a:"inse",table:"editor",name:editor},function(data){
+                console.log(data)
 				if(data!='no'){
-					g.db.func("q",'UPDATE book SET editor='+data+' WHERE id='+GS.id);
-					g.ui.notify('alert','Editor saved')
+					s.db.func("q",'UPDATE book SET editor='+data+' WHERE id='+G.id);
+					s.ui.notify('alert','Editor saved')
 					}
             },'json');
         }else{
-            g.ui.notify('alert','Please insert a category.')
+            s.ui.notify('alert','Please insert a category.')
         }
 })
 
@@ -189,12 +186,12 @@ $(document).on('keyup', "#title, #summary, #notes, #tag", function () {
 		$('#titlebig').text(this.value);
 	}
 	         var obj = {
-            id :GS.id,
+            id :G.id,
             value : this.id+"='"+this.value+"'",
             table : "book",
-            where : "id="+g.get.id
+            where : "id="+s.get.id
 			}
-	g.db.queryhtml(obj, function(data){g.l(data);},"POST");
+	s.db.queryhtml(obj, function(data){console.log(data);},"POST");
 })
 }
 
@@ -203,7 +200,7 @@ $(document).on('click', "button[id^='del']", function () {
 	var id=this.id.replace('del','');
 	bootbox.confirm("This book record will be deleted. Are you sure?",function(res){
 	if(res){
-		 $.get(GS.APPS+'bks/ajax.php',{a:"del",b:GS.mode,c:id},function(data){
+		 $.get(G.APPS+'bks/ajax.php',{a:"del",b:G.mode,c:id},function(data){
 			$('#nodorder1_'+id).hide();
 		 })
 		 }
@@ -219,9 +216,9 @@ $(document).on('click', "button[id^='del']", function () {
     .on("click","a[id^='order_']",function(){
         var name= this.id.replace('order_','')
 //log(name)
-        var orderby= g.cookie.get('orderby')== name+' ASC' ? name+' DESC': name+' ASC';
-        g.cookie.set('orderby',orderby);
-        g.cookie.delete('page');
+        var orderby= s.coo('orderby')== name+' ASC' ? name+' DESC': name+' ASC';
+        s.coo('orderby',orderby);
+        s.coo.delete('page');
         // reset('mgr')
         location.reload();
     })
@@ -230,13 +227,13 @@ $(document).on('click', "button[id^='del']", function () {
 //page
 $(document).on('click', "button[id^='page_']", function () {
     var page= this.id.replace('page_', '');
-    g.cookie.set('page',page);
-    g.ui.reset('#bookbox');
+    s.coo('page',page);
+    s.ui.reset('#bookbox');
     booklist()
 })
 
 
 //experimental run neo4j
 // $.get("https://aimd5.com:7473/db/data/",function(neo){
-// g.l(neo)
+// console.log(neo)
 // },'json')

@@ -27,7 +27,7 @@ $(document).on('click', "#fbooks", function () {
 search_book($('#name').val());
 function search_book(q){
     $.get("https://www.googleapis.com/books/v1/volumes?q="+q,{},function(res){
-        g.l(res)
+        console.log(res)
         var items='';
         // var res= JSON.parse(res);
         for(var i in res.items){
